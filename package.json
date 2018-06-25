@@ -12,20 +12,26 @@
     "lint:prettier": "prettier --list-different '**/*.js'",
     "precommit": "lint-staged"
   },
+  "greenkeeper": {
+    "ignore": [
+      "eslint",
+      "eslint-plugin-import"
+    ]
+  },
   "dependencies": {
     "coarse": "^0.8.0",
     "command-line-usage": "^5.0.5",
     "gradient-string": "^1.1.0",
     "meow": "^5.0.0",
-    "read-pkg-up": "^3.0.0",
+    "read-pkg-up": "^4.0.0",
     "signale": "^1.2.0",
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.13.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.5",
     "prettier": "^1.12.1"
