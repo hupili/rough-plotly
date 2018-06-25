@@ -1,6 +1,6 @@
 {
   "name": "coarse-cli",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "convert an svg with rough from the command line ",
   "author": "ismay",
   "license": "MIT",
