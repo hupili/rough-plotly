@@ -1,0 +1,33 @@
+{
+  "name": "coarse-cli",
+  "version": "0.0.0",
+  "description": "convert an svg with rough from the command line ",
+  "author": "ismay",
+  "license": "MIT",
+  "bin": {
+    "coarse": "bin/index.js"
+  },
+  "scripts": {
+    "lint:js": "eslint '**/*.js'",
+    "lint:prettier": "prettier --list-different '**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "coarse": "^0.8.0",
+    "command-line-usage": "^5.0.5",
+    "gradient-string": "^1.1.0",
+    "meow": "^5.0.0",
+    "read-pkg-up": "^3.0.0",
+    "signale": "^1.2.0",
+    "update-notifier": "^2.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.5",
+    "prettier": "^1.12.1"
+  }
+}
