@@ -1,7 +1,6 @@
 # coarse-cli
 
 [![build status][build-badge]][build-url]
-[![greenkeeper][greenkeeper-badge]][greenkeeper-url]
 
 > convert an svg with rough from the command line
 
@@ -23,5 +22,3 @@ npm install -g coarse-cli
 
 [build-badge]: https://travis-ci.org/ismay/coarse-cli.svg?branch=master
 [build-url]: https://travis-ci.org/ismay/coarse-cli
-[greenkeeper-badge]: https://badges.greenkeeper.io/ismay/coarse-cli.svg
-[greenkeeper-url]: https://greenkeeper.io/
