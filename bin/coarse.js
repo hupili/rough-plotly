@@ -116,7 +116,7 @@ const coarse = (input, options = {}) => {
 
   // ==== Tune the styles to beautify the graph ====
 
-  // lowlight the axes and gridlines
+  // Lowlight the axes and gridlines
 
   const paths = svg.querySelectorAll('g.gridlayer path');
   for (let i = 0; i < paths.length; i += 1) {
@@ -124,10 +124,22 @@ const coarse = (input, options = {}) => {
     p.setAttribute('style', 'stroke: #aaa; stroke-width: 0.5; fill: none;');
   }
 
+  // Lowlight the legend region
   svg.querySelector('g.draglayer.cursor-crosshair').remove();
   svg.querySelector('g.legend g.bg').remove();
   svg.querySelectorAll('g.legendtoggle').forEach(x => {
     x.remove();
+  });
+
+  const toColorElements = [
+    ...svg.querySelectorAll('g.lines path'),
+    ...svg.querySelectorAll('g.points path'),
+    ...svg.querySelectorAll('g.legendlines path'),
+    ...svg.querySelectorAll('g.legendsymbols path')
+  ];
+
+  toColorElements.forEach(x => {
+    x.removeAttribute('style');
   });
 
   return svg.outerHTML;
