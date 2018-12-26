@@ -1,8 +1,8 @@
 {
-    "name": "coarse-cli",
+    "name": "rough-plotly",
     "version": "0.1.0",
-    "description": "convert an svg with rough from the command line ",
-    "author": "ismay",
+    "description": "Combine rough.js with plotly.js, based on ismay/coarse",
+    "author": "hupili",
     "license": "MIT",
     "bin": {
         "coarse": "bin/index.js"
