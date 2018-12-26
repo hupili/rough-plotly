@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const signale = require('signale');
-const coarse = require('coarse');
 const updateNotifier = require('update-notifier');
 const meow = require('meow');
+const coarse = require('./coarse.js');
 const help = require('./help');
 const validate = require('./validate');
 const pkg = require('./pkg');

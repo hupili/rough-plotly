@@ -1,3 +1,15 @@
+**WIP**
+
+Largely based on [ismay/coarse/](https://github.com/ismay/coarse/)
+
+Some related discussions:
+
+- https://github.com/ismay/coarse/issues/22
+
+Following is original doc.
+
+--------
+
 # coarse-cli
 
 [![build status][build-badge]][build-url]
