@@ -6,6 +6,16 @@ Some related discussions:
 
 - https://github.com/ismay/coarse/issues/22
 
+
+Before modification:
+
+![](images/orig.png)
+
+After modification:
+
+![](images/current.png)
+
+
 Following is original doc.
 
 --------
