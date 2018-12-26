@@ -114,6 +114,22 @@ const coarse = (input, options = {}) => {
     original.replaceWith(replacement);
   }
 
+  // ==== Tune the styles to beautify the graph ====
+
+  // lowlight the axes and gridlines
+
+  const paths = svg.querySelectorAll('g.gridlayer path');
+  for (let i = 0; i < paths.length; i += 1) {
+    const p = paths[i];
+    p.setAttribute('style', 'stroke: #aaa; stroke-width: 0.5; fill: none;');
+  }
+
+  svg.querySelector('g.draglayer.cursor-crosshair').remove();
+  svg.querySelector('g.legend g.bg').remove();
+  svg.querySelectorAll('g.legendtoggle').forEach(x => {
+    x.remove();
+  });
+
   return svg.outerHTML;
 };
 
