@@ -50,6 +50,14 @@ const coarse = (input, options = {}) => {
   // Get all descendants of the svg that should be processed
   const children = svg.querySelectorAll('circle, rect, ellipse, line, polygon, polyline, path');
 
+  // Remove clip-path to make show inner elements
+  const g1 = svg.querySelector('g.plot');
+  g1.removeAttribute('clip-path');
+  const g2 = svg.querySelector('g.scrollbox');
+  g2.removeAttribute('clip-path');
+  // Remove the plotly URL at bottom
+  svg.querySelector('text.js-plot-link-container').remove();
+
   // Loop through all child elements
   for (let i = 0; i < children.length; i += 1) {
     const original = children[i];
