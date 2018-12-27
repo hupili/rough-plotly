@@ -11,19 +11,41 @@
     <defs id="topdefs-6159bb"><g class="clips"/><clipPath id="legend6159bb"><rect width="81" height="67" x="0" y="0"/></clipPath></defs><g class="layer-above"><g class="imagelayer"/><g class="shapelayer"/></g><g class="infolayer"><g class="legend" pointer-events="all" transform="translate(384.98, 100)"><rect class="bg" shape-rendering="crispEdges" style="stroke: rgb(68, 68, 68); stroke-opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; stroke-width: 0px;" width="81" height="67" x="0" y="0"/><g class="scrollbox" transform="translate(0, 0)" clip-path="url(#legend6159bb)"><g class="groups"><g class="traces" transform="translate(0, 14.5)" style="opacity: 1;"><g class="layers" style="opacity: 1;"><g class="legendfill"/><g class="legendlines"/><g class="legendsymbols"><g class="legendpoints"><path class="legendbar" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"/></g></g></g><text class="legendtext user-select-none" text-anchor="start" x="40" y="4.680000000000001" data-unformatted="未声明" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">未声明</text><rect class="legendtoggle" pointer-events="all" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;" x="0" y="-9.5" width="121" height="19"/></g><g class="traces" transform="translate(0, 33.5)" style="opacity: 1;"><g class="layers" style="opacity: 1;"><g class="legendfill"/><g class="legendlines"/><g class="legendsymbols"><g class="legendpoints"><path class="legendbar" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(255, 127, 14); fill-opacity: 1;"/></g></g></g><text class="legendtext user-select-none" text-anchor="start" x="40" y="4.680000000000001" data-unformatted="男" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">男</text><rect class="legendtoggle" pointer-events="all" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;" x="0" y="-9.5" width="121" height="19"/></g><g class="traces" transform="translate(0, 52.5)" style="opacity: 1;"><g class="layers" style="opacity: 1;"><g class="legendfill"/><g class="legendlines"/><g class="legendsymbols"><g class="legendpoints"><path class="legendbar" d="M6,6H-6V-6H6Z" transform="translate(20,0)" style="stroke-width: 0px; fill: rgb(44, 160, 44); fill-opacity: 1;"/></g></g></g><text class="legendtext user-select-none" text-anchor="start" x="40" y="4.680000000000001" data-unformatted="女" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(68, 68, 68); fill-opacity: 1; white-space: pre;">女</text><rect class="legendtoggle" pointer-events="all" x="0" y="-9.5" width="121" height="19" style="cursor: pointer; fill: rgb(0, 0, 0); fill-opacity: 0;"/></g></g></g><rect class="scrollbar" rx="20" ry="3" width="0" height="0" style="fill: rgb(128, 139, 164); fill-opacity: 1;" x="0" y="0"/></g><g class="g-gtitle"/><g class="g-xtitle"/><g class="g-ytitle"/></g><g class="menulayer"/><g class="zoomlayer"/><g class="hoverlayer"/></svg>
 
     <script>
+        // Ref: https://stackoverflow.com/a/14865690
+        function rulesForCssText(styleContent) {
+            // const dom = new JSDOM(`<!DOCTYPE html><body><p>Hello world</p></body>`);
+            // const document = dom.window.document;
+            // var doc = document.implementation.createHTMLDocument("");
+            var styleElement = document.createElement("style");
+            // const styleElement = new JSDOM("<style></style>");
+
+            styleElement.textContent = `div { ${styleContent} }`;
+            // console.log(styleElement.textContent);
+            // the style will only be parsed once it is added to a document
+            document.body.appendChild(styleElement);
+
+            return styleElement.sheet.cssRules[0].style;
+        };
+    </script>
+
+
+    <script>
         svg = document.querySelector('svg');
         const rc = rough.svg(svg);
-        const p = svg.querySelector('g.point path');
-        d = p.getAttribute('d');
-        // console.log(JSON.stringify(d));
-        // console.log(d)
-        let rp = rc.path(d, {
-            fill: 'red',
-            fillStyle: 'zigzag',
-            fillWeight: 2,
-        });
-        p.replaceWith(rp);
-        // svg.appendChild(rp);
+        svg.querySelectorAll('g.point path').forEach(
+            (p) => {
+                d = p.getAttribute('d');
+                // console.log(JSON.stringify(d));
+                // console.log(d)
+                let rp = rc.path(d, {
+                    fill: rulesForCssText(p.getAttribute('style'))['fill'],
+                    fillStyle: 'zigzag',
+                    fillWeight: 2,
+                });
+                p.replaceWith(rp);
+                // svg.appendChild(rp);
+            }
+        )
     </script>
 
 </body>
