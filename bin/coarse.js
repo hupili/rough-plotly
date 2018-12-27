@@ -118,7 +118,10 @@ const coarse = (input, options = {}) => {
 
   // Lowlight the axes and gridlines
 
-  const paths = svg.querySelectorAll('g.gridlayer path');
+  const paths = [
+    ...svg.querySelectorAll('g.gridlayer path'),
+    ...svg.querySelectorAll('g.zerolinelayer path')
+  ];
   for (let i = 0; i < paths.length; i += 1) {
     const p = paths[i];
     p.setAttribute('style', 'stroke: #aaa; stroke-width: 0.5; fill: none;');
@@ -139,7 +142,7 @@ const coarse = (input, options = {}) => {
   ];
 
   toColorElements.forEach(x => {
-    x.removeAttribute('style');
+    x.setAttribute('style', 'stroke-width: 2;');
   });
 
   return svg.outerHTML;
