@@ -1,0 +1,24 @@
+<head>
+
+    <script src="node_modules/roughjs/dist/rough.js"></script>
+
+</head>
+
+<body>
+    <h1>Test roughjs</h1>
+    <svg style="width:300px; height: 500px"></svg>
+
+    <script>
+        const svg = document.querySelector('svg');
+        const rc = rough.svg(svg);
+        let node = rc.rectangle(10, 10, 200, 200); // x, y, width, height
+        svg.appendChild(node);
+        let node2 = rc.path('M230 80 A 45 45, 0, 1, 0, 275 125 L 275 80 Z', {
+            fill: 'red',
+            fillStyle: 'zigzag', // 'dots'
+            fillWeight: 1,
+        });
+        svg.appendChild(node2);
+    </script>
+
+</body>
