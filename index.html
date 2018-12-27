@@ -6,19 +6,47 @@
 
 <body>
     <h1>Test roughjs</h1>
-    <svg style="width:300px; height: 500px"></svg>
+    <svg style="width:300px; height: 500px">
+            <g xmlns="http://www.w3.org/2000/svg" class="point"><path d="M56.68,427V230.82H80.55V427Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0px; fill: rgb(44, 160, 44); fill-opacity: 1;"/></g>
+    </svg>
 
     <script>
         const svg = document.querySelector('svg');
         const rc = rough.svg(svg);
         let node = rc.rectangle(10, 10, 200, 200); // x, y, width, height
         svg.appendChild(node);
-        let node2 = rc.path('M230 80 A 45 45, 0, 1, 0, 275 125 L 275 80 Z', {
+
+        let node3 = rc.path('M230 80 A 45 45, 0, 1, 0, 275 125 L 275 80 Z', {
+            // let node3 = rc.path('M156.68,427V230.82H80.55V427Z', {
+            fill: 'purple',
+            fillStyle: 'zigzag', // 'dots'
+            fillWeight: 1,
+        });
+        svg.appendChild(node3);
+
+        // M56.68,427V230.82H80.55V427Z
+        // let node2 = rc.path('M230 80 A 45 45, 0, 1, 0, 275 125 L 275 80 Z', {
+        let node2 = rc.path('M156.68,427V230.82H80.55V427Z', {
             fill: 'red',
             fillStyle: 'zigzag', // 'dots'
             fillWeight: 1,
         });
         svg.appendChild(node2);
     </script>
+
+    <script>
+        const p = svg.querySelector('g.point path');
+        d = p.getAttribute('d');
+        // console.log(JSON.stringify(d));
+        // console.log(d)
+        let rp = rc.path(d, {
+            fill: 'red',
+            fillStyle: 'zigzag',
+            fillWeight: 2,
+        });
+        p.replaceWith(rp);
+        // svg.appendChild(rp);
+    </script>
+
 
 </body>
