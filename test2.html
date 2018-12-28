@@ -143,15 +143,9 @@
     <script>
         // Ref: https://stackoverflow.com/a/14865690
         function rulesForCssText(styleContent) {
-            // const dom = new JSDOM(`<!DOCTYPE html><body><p>Hello world</p></body>`);
-            // const document = dom.window.document;
-            // var doc = document.implementation.createHTMLDocument("");
             var styleElement = document.createElement("style");
-            // const styleElement = new JSDOM("<style></style>");
 
             styleElement.textContent = `div { ${styleContent} }`;
-            // console.log(styleElement.textContent);
-            // the style will only be parsed once it is added to a document
             document.body.appendChild(styleElement);
 
             return styleElement.sheet.cssRules[0].style;
@@ -160,26 +154,11 @@
 
     <script>
         function roughItBlock(p) {
-
             roughIt(p, {
                 fill: rulesForCssText(p.getAttribute('style'))['fill'],
                 fillStyle: 'zigzag',
                 fillWeight: 1.5,
             })
-
-            // d = p.getAttribute('d');
-            // console.log(JSON.stringify(d));
-            // console.log(d)
-
-            // s = Object.assign({}, getSettings(p), {
-            //     fill: rulesForCssText(p.getAttribute('style'))['fill'],
-            //     fillStyle: 'zigzag',
-            //     fillWeight: 2,
-            // });
-
-            // let rp = rc.path(d, s);
-            // p.replaceWith(rp);
-            // svg.appendChild(rp);
         }
     </script>
 
@@ -187,16 +166,10 @@
     <script>
         svg = document.querySelector('svg');
         const rc = rough.svg(svg);
-        svg.querySelectorAll('g.point path').forEach(
-            (p) => {
-                roughItBlock(p)
-            }
-        )
-
-        svg.querySelectorAll('g.scrollbox rect').forEach((original) => {
-            // roughIt(original);
-            original.remove();
+        svg.querySelectorAll('g.point path').forEach((original) => {
+            roughItBlock(original)
         })
+
         svg.querySelectorAll('g.legendpoints path').forEach((original) => {
             roughItBlock(original)
         })
@@ -209,14 +182,9 @@
             roughIt(original);
         })
 
-
-        const paths = [
-            ...svg.querySelectorAll('g.gridlayer path'),
-        ];
-        for (let i = 0; i < paths.length; i += 1) {
-            const p = paths[i];
-            p.setAttribute('style', 'stroke: #aaa; stroke-width: 0.5; fill: none;');
-        }
+        svg.querySelectorAll('g.gridlayer  path').forEach((original) => {
+            original.setAttribute('style', 'stroke: #aaa; stroke-width: 0.5; fill: none;');
+        })
     </script>
 
 </body>
