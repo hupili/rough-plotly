@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="bin/roughplotly.js"></script>
+</head>
+
+<body>
+    <h1>Test drop-in to iframe</h1>
+    <iframe id="chart" src="hidden-ratio.html" frameborder="0" width="100%" height="500" onload="if (chart.contentWindow.location.href != 'about:blank') iframeLoaded()"></iframe>
+
+    <pre class='script' src="node_modules/roughjs/dist/rough.js"></pre>
+    <pre class='script' src='bin/roughplotly.js'></pre>
+    <pre class='script'>
+        setTimeout(function(){
+            document.querySelectorAll('svg').forEach(
+                function(svg){
+                    //console.log(svg);
+                    roughPlotly(svg);
+                }
+            )
+        }, 500);
+    </pre>
+
+    <script>
+        function iframeLoaded() {
+            var myIframe = document.getElementById('chart');
+            var innerBody = myIframe.contentWindow.document.body;
+            // innerBody.innerHTML = innerBody.innerHTML + '<h2>in iframe</h2>';
+            // console.log('inner body')
+            // console.log(innerBody.innerHTML);
+            $('pre.script').map(function() {
+                var toInsert = $(this);
+                var myScript = document.createElement('script');
+                myScript.innerHTML = toInsert.html();
+                if (toInsert.attr('src')) {
+                    myScript.src = toInsert.attr('src');
+                }
+                innerBody.appendChild(myScript);
+            });
+        };
+        // $(function() {
+        //     $('iframe').ready(function() {
+        //         var myIframe = document.getElementById('chart');
+        //         var innerBody = myIframe.contentWindow.document.body;
+        //         innerBody.innerHTML = innerBody.innerHTML + '<h2>in iframe</h2>';
+        //         console.log('inner body')
+        //         console.log(innerBody.innerHTML);
+        //     })
+        // })
+    </script>
+
+</body>
+
+</html>
