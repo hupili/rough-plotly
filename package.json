@@ -10,7 +10,6 @@
     "scripts": {
         "lint:js": "eslint '**/*.js'",
         "lint:prettier": "prettier --list-different '**/*.js'",
-        "precommit": "lint-staged"
     },
     "greenkeeper": {
         "ignore": [
