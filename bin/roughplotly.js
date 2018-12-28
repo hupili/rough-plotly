@@ -1,5 +1,5 @@
-function roughPlotly(selector) {
-  svg = document.querySelector(selector);
+function roughPlotly(svg) {
+
   const rc = rough.svg(svg);
 
   /**
