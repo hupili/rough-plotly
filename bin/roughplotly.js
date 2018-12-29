@@ -144,7 +144,10 @@ function roughPlotly(svg) {
 
     // Generic
 
-    // svg.querySelector('text.js-plot-link-container').remove();
+    plotlyLink = svg.querySelector('text.js-plot-link-container')
+    if (plotlyLink) {
+        plotlyLink.remove();
+    }
 
     // Bar chart
 
