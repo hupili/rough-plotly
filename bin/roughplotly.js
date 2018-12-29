@@ -144,7 +144,7 @@ function roughPlotly(svg) {
 
     // Generic
 
-    svg.querySelector('text.js-plot-link-container').remove();
+    // svg.querySelector('text.js-plot-link-container').remove();
 
     // Bar chart
 
@@ -172,29 +172,29 @@ function roughPlotly(svg) {
         original.setAttribute('style', 'stroke: #aaa; stroke-width: 0.5; fill: none;');
     });
 
-    // Line chart
+    // // Line chart
 
-    svg.querySelectorAll('g.points path').forEach(original => {
-        roughIt(original);
-    });
-
-    svg.querySelectorAll('g.lines path').forEach(original => {
-        roughIt(original);
-    });
-
-    const toColorElements = [
-        // ...svg.querySelectorAll('g.points path'),
-        ...svg.querySelectorAll('g.lines path'),
-        // ...svg.querySelectorAll('g.legendlines path'),
-        // ...svg.querySelectorAll('g.legendsymbols path')
-    ];
-
-    toColorElements.forEach(x => {
-        x.setAttribute('style', 'stroke-width: 2;');
-    });
-
-    // svg.querySelectorAll('g.legend traces rect.legendtoggle').forEach(original => {
+    // svg.querySelectorAll('g.points path').forEach(original => {
     //     roughIt(original);
     // });
+
+    // svg.querySelectorAll('g.lines path').forEach(original => {
+    //     roughIt(original);
+    // });
+
+    // const toColorElements = [
+    //     // ...svg.querySelectorAll('g.points path'),
+    //     ...svg.querySelectorAll('g.lines path'),
+    //     // ...svg.querySelectorAll('g.legendlines path'),
+    //     // ...svg.querySelectorAll('g.legendsymbols path')
+    // ];
+
+    // toColorElements.forEach(x => {
+    //     x.setAttribute('style', 'stroke-width: 2;');
+    // });
+
+    // // svg.querySelectorAll('g.legend traces rect.legendtoggle').forEach(original => {
+    // //     roughIt(original);
+    // // });
 
 }
