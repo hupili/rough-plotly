@@ -23,6 +23,19 @@
         }, 500);
     </pre>
 
+    <pre class='script'>
+        var link = document.createElement('link');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', 'https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
+        document.body.appendChild(link);
+        
+        document.querySelectorAll('svg g text').forEach(function(element){
+            var style = element.getAttribute('style');
+            style = style + "font-family: 'ZCOOL KuaiLe', cursive";
+            element.setAttribute('style', style);
+        });
+    </pre>
+
     <script>
         function iframeLoaded() {
             var myIframe = document.getElementById('chart');
